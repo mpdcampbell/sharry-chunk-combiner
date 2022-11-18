@@ -17,12 +17,12 @@ if [ ! -d $outputDir ]; then
     mkdir $outputDir;
 fi
 
-#Dictionary of mime-type and extension
-
-extByType[jpeg]=.jpeg
-extByType[png]=.png
-extByType[quicktime]=.qt
-extByType[mp4]=.mp4
+declare -A extByType;
+while read -r line; do
+    mimetype=$(echo $line | cut -d "|" -f 1);
+    ext=$(echo $line | cut -d "|" -f 2);
+    extByType[$mimetype]="$ext";
+done < extByMimeType.txt
 
 #Get padded zero count for filename
 fileCount=$(wc -l < $dirListPath.txt);
@@ -33,6 +33,7 @@ while read -r line; do
     cd "$line" ; cat ~+/* >> $line/output.tmp;
     mimetype=$(file -b --mime-type output.tmp | cut -d "/" -f 2);
     extension=${extByType[$mimetype]};
+    echo $extension;
     paddedInt=$(printf "%0${digitCount}d" ${i});
     mv output.tmp $outputDir/file_$paddedInt$extension;
     ((i=i+1));
