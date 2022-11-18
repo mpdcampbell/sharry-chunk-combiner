@@ -624,7 +624,7 @@ x-msbinder|.obd
 x-mscardfile|.crd
 x-msclip|.clp
 x-msdownload|.exe
-X-msdos-batch|.bat
+x-msdos-batch|.bat
 x-msmediaview|.mvb
 x-msmetafile|.wmf
 x-msmoney|.mny
