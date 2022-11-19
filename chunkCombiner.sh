@@ -1,19 +1,27 @@
-#! /bin/bash
+#!/bin/bash
 
-#Directory Paths
-databaseDir=$databaseDir
-dirList="dirList"
-dirListPath=$dirListPath
-outputDir=$outputDir
+#File Paths
+databaseDir= #ENTER PATH TO DATABASE DIRECTORY eg /home/user/sharrydb/
+outputDir= #ENTER PATH TO DIRECTORY TO OUTPUT RECOMBINED FILES
+dirListPath=$outputDir/dirList
+
+#Check variables were updated
+if [ -z "$databaseDir" ]; then
+  echo "Error: The databaseDir variable is empty, exiting script."
+  exit 1
+elif [ -z "$outputDir" ]; then
+  echo "Error: The outputDir variable is empty, exiting script."
+  exit 1
+fi
+
+if [ ! -d $outputDir ]; then
+    mkdir $outputDir;
+fi
 
 #List lowest level directories with chunks
 find $databaseDir -type f -exec dirname {} >> $dirListPath.tmp +;
 awk '!a[$0]++' $dirListPath.tmp >> $dirListPath.txt;
 rm $dirListPath.tmp;
-
-if [ ! -d $outputDir ]; then
-    mkdir $outputDir;
-fi
 
 #Read in dictionary of mime-type and extension
 declare -A extByType;
