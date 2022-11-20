@@ -39,7 +39,7 @@ i=1;
 #Combine chunks and assign extension
 while read -r line; do
     cd "$line" ; cat ~+/* >> $line/output.tmp;
-    mimetype=$(file -b --mime-type output.tmp | cut -d "/" -f 2);
+    mimetype=$(file -b --mime-type output.tmp);
     extension=${extByType[$mimetype]};
     paddedInt=$(printf "%0${digitCount}d" ${i});
     mv output.tmp $outputDir/file_$paddedInt$extension;
