@@ -18,15 +18,15 @@ if [ ! -d $outputDir ]; then
     mkdir $outputDir;
 fi
 
-#List lowest level directories with chunks
+echo "Generating list of data directories.";
 find $databaseDir -type f -exec dirname {} >> $dirListPath.tmp +;
 awk '!a[$0]++' $dirListPath.tmp >> $dirListPath.txt;
 rm $dirListPath.tmp;
 
-#Read in dictionary of mime-type and extension
+echo "Reading in MIME type dictionary.";
 declare -A extByType;
 while read -r line; do
-    mimetype=$(echo $line | cut -d "|" -f 1);
+    mimeType=$(echo $line | cut -d "|" -f 1);
     ext=$(echo $line | cut -d "|" -f 2);
     extByType[$mimetype]="$ext";
 done < extByMimeType.txt
@@ -34,16 +34,18 @@ done < extByMimeType.txt
 #Get padded zero count for filename
 fileCount=$(wc -l < $dirListPath.txt);
 digitCount=${#fileCount};
-i=1;
+i=0;
 
 #Combine chunks and assign extension
 while read -r line; do
+    ((i=i+1));
     cd "$line" ; cat ~+/* >> $line/output.tmp;
-    mimetype=$(file -b --mime-type output.tmp);
-    extension=${extByType[$mimetype]};
+    mimeType=$(file -b --mime-type output.tmp);
+    extension=${extByType[$mimeType]};
     paddedInt=$(printf "%0${digitCount}d" ${i});
     mv output.tmp $outputDir/file_$paddedInt$extension;
-    ((i=i+1));
+    echo -ne "File $i/$fileCount rebuilt.\r";
 done <$dirListPath.txt
 
 rm $dirListPath.txt
+echo "File $i/$fileCount rebuilt.";
