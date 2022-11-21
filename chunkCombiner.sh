@@ -15,7 +15,7 @@ if (($# == 0)); then
     usage;
 fi
 
-optstring=":d:o:";
+optstring=":d:o:h";
 
 while getopts ${optstring} arg; do
     case "${arg}" in
