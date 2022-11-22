@@ -3,9 +3,10 @@
 function usage {
     echo "Usage: $(basename $0) [-d -o]"
     echo "  Mandatory Flags."
-    echo "    -d    Path to Sharry filesystem database directory."
-    echo "    -o    Path to directory to output rebuilt files."
-#    echo "  Optional Flag."
+    echo "    -d    Absolute path to Sharry filesystem database directory."
+    echo "    -o    Absolute path to directory to output rebuilt files."
+    echo "  Other Flags."
+    echo "    -h    Show usage."
 #    echo "    -e    File type extensions you want to rebuild."     
     exit 1
 }
