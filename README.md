@@ -40,7 +40,7 @@ Usage: chunkCombiner.sh [-d -o -h]
   Other Flags.
     -h    Show usage.
 ```
-So for example run the script with
+So for example run the script with:
 ```
 ./chunkCombiner.sh -d ~/sharryDatabase/ -o outputDirectory
 ```
@@ -48,5 +48,5 @@ So for example run the script with
 ## Limitations
 The script has a few main limitations:
  - Original filenames are lost.
- - If the file extension isn't in the dictionary, it wont be assigned. The file will still be rebuilt just named with no extension.
- - It uses associate arrays, added in Bash 4.0 in 2009. By default Mac OS only has Bash 3.2, [because of licensing](https://thenextweb.com/news/why-does-macos-catalina-use-zsh-instead-of-bash-licensing). 
+ - If the file mime-type isn't in the dictionary, it wont be assigned. The file will still be rebuilt just without an extension.
+ - It uses associate arrays, added with Bash 4.0 in 2009. By default Mac OS only has Bash 3.2 [because of licensing](https://thenextweb.com/news/why-does-macos-catalina-use-zsh-instead-of-bash-licensing). 
