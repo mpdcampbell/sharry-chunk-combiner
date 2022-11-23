@@ -12,7 +12,7 @@ I hosted a Sharry instance for wedding guests to upload photos and videos. Then 
 
 ## How to use?
 0. [Backup your data](#0-backup-your-data)
-1. [Check Sharry configured to filesystem storage](#1-check-sharry-configuration)
+1. [Check Sharry configuration](#1-check-sharry-configuration)
 2. [Clone this repo](#2-clone-this-repo)
 3. [Run script](#3-run-the-script)
 
@@ -35,14 +35,14 @@ The script requires two input arguments to work, -d and -o, explained below.
 ```
 Usage: chunkCombiner.sh [-d -o -h]
   Mandatory Flags.
-    -d    Absolute path to Sharry filesystem database directory.
-    -o    Absolute path to directory to output rebuilt files.
+    -d    Path to Sharry filesystem database directory.
+    -o    Path to directory to output rebuilt files.
   Other Flags.
     -h    Show usage.
 ```
 So for example run the script with
 ```
-./chunkCombiner.sh -d ~/sharryDatabase/ -o ~/outputDirectory
+./chunkCombiner.sh -d ~/sharryDatabase/ -o outputDirectory
 ```
 
 ## Limitations

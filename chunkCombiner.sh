@@ -3,8 +3,8 @@
 function usage {
     echo "Usage: $(basename $0) [-d -o]"
     echo "  Mandatory Flags."
-    echo "    -d    Absolute path to Sharry filesystem database directory."
-    echo "    -o    Absolute path to directory to output rebuilt files."
+    echo "    -d    Path to Sharry filesystem database directory."
+    echo "    -o    Path to directory to output rebuilt files."
     echo "  Other Flags."
     echo "    -h    Show usage."
 #    echo "    -e    File type extensions you want to rebuild."     
@@ -74,12 +74,12 @@ i=0;
 
 #Combine chunks and assign extension
 while read -r line; do
-    ((i=i+1));
-    cd "$line" ; cat ~+/* >> $line/output.tmp;
-    mimeType=$(file -b --mime-type output.tmp);
+    ((i=i+1)); 
+    cat $line/* >> $line/output.tmp;
+    mimeType=$(file -b --mime-type $line/output.tmp);
     extension=${extByType[$mimeType]};
     paddedInt=$(printf "%0${digitCount}d" ${i});
-    mv output.tmp $outputDir/file_$paddedInt$extension;
+    mv $line/output.tmp $outputDir/file_$paddedInt$extension;
     echo -ne "File $i/$fileCount rebuilt.\r";
 done <$dirListPath.txt
 
