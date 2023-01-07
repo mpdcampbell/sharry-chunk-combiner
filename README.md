@@ -1,6 +1,6 @@
 # sharry-chunk-combiner
-[Sharry](https://github.com/eikek/sharry) doesn't have a "Download all" option at present.  
-This bash script recombines the locally stored database chunks back into complete files to avoid manually downloading files.
+[Sharry](https://github.com/eikek/sharry) supports large grouped uploads of files, but doesn't have a "Download all" option at present.  
+This bash script combines the locally stored database chunks back into complete files to avoid manually downloading individual files.
 
 ### Example
 <p align="Left">
