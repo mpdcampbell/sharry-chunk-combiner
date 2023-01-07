@@ -49,4 +49,9 @@ So for example run the script with:
 The script has a few main limitations:
  - Original filenames are lost.
  - If the file mime-type isn't in the dictionary, it wont be assigned. The file will still be rebuilt just without an extension.
- - It uses associate arrays, added with Bash 4.0 in 2009. By default Mac OS only has Bash 3.2 [because of licensing](https://thenextweb.com/news/why-does-macos-catalina-use-zsh-instead-of-bash-licensing). 
+ - It uses associate arrays, added with Bash 4.0 in 2009. By default Mac OS only has Bash 3.2 [because of licensing](https://thenextweb.com/news/why-does-macos-catalina-use-zsh-instead-of-bash-licensing).
+
+## License
+GNU General Public License v3.0 or later
+
+See [COPYING](COPYING) to see the full text. 
