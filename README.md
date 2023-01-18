@@ -1,4 +1,4 @@
-# sharry-chunk-combiner
+# [<img alt="alt_text" width="50px" src="https://www.codeslikeaduck.com/img/codeDuck.svg" />](https://www.codeslikeaduck.com/) sharry-chunk-combiner <br> [![License](https://img.shields.io/badge/license-GNU%20GPLv3-blue)](COPYING)
 [Sharry](https://github.com/eikek/sharry) supports large grouped uploads of files, but doesn't have a "Download all" option at present.  
 This bash script combines the locally stored database chunks back into complete files to avoid manually downloading individual files.
 
